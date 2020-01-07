@@ -1,37 +1,35 @@
+<?php
+// on regarde si la session est vide
+// si elle est vide on ne fait rien
+if(empty ($_SESSION))
+{}
+// sinon on la vide
+else
+{ session_destroy();}
+?>
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Mon histoire interactive</title>
-    </head>
-
+  <html>
+  <?php
+  //on recupere la page entete qui contien le css
+  require "entete.php" ;
+  ?>
     <body>
-
-    <?php include("entete.php");?>
-    <?php //include("menu.php");?>
-
-    <!-- Le corps -->
-
-   <div id="corps">
-        <h1>Mon histoire interactive</h1>
-
-        bonjour chers lecteurs cette histoire est interactive elle suivra vos desicions<br/>
-        le heros ou l'heroïne aura plusieurs choix et c'est vous qui determinerez sa destinées<br/>
-        <form action="recap.php" method="POST">premiere decition le sexe du votre personnage est<br/>
-        <input type="radio" name="Genre" value="Heroïne"> une Femme
-        <input type="radio" name="Genre" value="Hero"> un Homme
-        <input type="submit" value="Envoyer">
-        </form><br/>
-
-        <?php
-
-        ?>
-
-    </div>
-
-    <!-- Le pied de page -->
-
-    <?php include("footer.php"); ?>
-
+    <!-- bloc qui va contenir le formulaire pour se connecter -->
+      <div id="corps">
+        <!-- champ texte avec pseudo et password -->
+        Veuillez entrer votre pseudo et password :<p>
+        <form action="cible.php" method="post">
+          <input type="text" name="pseudo" value="" placeholder='pseudo'/><p/>
+          <input type="password" name="password" value="" placeholder='password'/><br/><br/>
+          <input type="submit" value="Valider"/>
+        </form>
+        <!-- bouton s'enregister -->
+        <form>
+        <!-- <a href="#">mot de passe oublié ?</a> -->
+        <a href="senregistrer.php"><input type="button" name="bouton"value="s'enregistrer"/></a>
+        </form>
+      </div>
     </body>
-</html>
+  <?php require "pied_de_page.php"; ?>
+  </html>
